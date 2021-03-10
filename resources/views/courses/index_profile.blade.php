@@ -1,0 +1,1 @@
+<img src="{{ $course->getFirstMediaUrl('courses') }} " alt="profile" width="100px" height="100px">
