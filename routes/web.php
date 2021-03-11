@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 // });
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@home')->name('home');
-Route::get('/', 'HomeController@landing')->name('landing');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('courses', 'CourseController');
 Route::get('course-application','StudentApplicationController@create')->name('course-application');
 Route::get('course-application/store','StudentApplicationController@store')->name('course-application-store');

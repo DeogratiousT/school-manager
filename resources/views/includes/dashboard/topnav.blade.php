@@ -154,7 +154,7 @@
                         <img src="{{ asset('images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                     </span>
                     <span>
-                        <span class="account-user-name">Dominic Keller</span>
+                        <span class="account-user-name">{{ Auth::user()->name }}</span>
                         <span class="account-position">Founder</span>
                     </span>
                 </a>
@@ -178,22 +178,14 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lifebuoy mr-1"></i>
-                        <span>Support</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lock-outline mr-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a class="dropdown-item notify-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-logout mr-1"></i>
-                        <span>Logout</span>
+                        <span>{{ __('Logout') }}</span>
                     </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
 
                 </div>
             </li>

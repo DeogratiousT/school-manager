@@ -147,7 +147,7 @@
                                 <div class="card-deck">
                                     @foreach ($courses as $course)
                                         <div class="card d-block">
-                                            <img class="card-img-top" style="height:220px" src="{{ asset('storage/cover-images/'.$course->cover_image) }}" alt="Cover Image">
+                                            <img class="card-img-top" style="height:220px;" src="{{ asset('storage/cover-images/'.$course->cover_image) }}" alt="Cover Image">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $course->name }}</h5>
                                                 <a href="" class="btn btn-primary">View Course</a>
