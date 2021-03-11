@@ -23,9 +23,7 @@
                     <tr>
                         {{-- <th>Profile</th> --}}
                         <th>Name</th>
-                        <th>Cost</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -47,10 +45,7 @@
                 ajax: "{{ route('courses.index') }}",
                 columns: [
                     { name: 'name' },
-                    // { name: 'profile' },
-                    { name: 'cost' },
-                    { name: 'start_date' },
-                    { name: 'end_date' },
+                    { name: 'created_at' },
                     { name: 'action' , orderable: false, searchable: false }
                 ],
             });

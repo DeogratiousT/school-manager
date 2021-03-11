@@ -11,8 +11,16 @@
 @endsection
     
 @section('content')
+    <div class="float-left">
+        <h4>{{ $course->name }}</h4>
+    </div>
+
     <div class="float-right">
-        <a href="{{ route('courses.show',$course) }}" class="btn btn-danger">Delete Course</a>
+        <a href="{{ route('courses.destroy', $course) }}" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete-course-form_{{ $course->id }}').submit();">Delete</a>
+        <form id="delete-course-form_{{ $course->id }}" action="{{ route('courses.destroy', $course) }}" method="POST" style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
     </div>
 
     <div class="clearfix"></div>
@@ -36,38 +44,12 @@
                 <span class="d-none d-md-block">Requirements</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#nav-objectives" data-toggle="tab" aria-expanded="false" class="nav-link">
-                <i class="mdi mdi-settings-outline d-md-none d-block"></i>
-                <span class="d-none d-md-block">Objectives</span>
-            </a>
-        </li>
     </ul>
 
     <div class="tab-content">
         <div class="tab-pane show active" id="nav-details">
             <div class="row">        
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>Course Details
-                                <span class="float-right mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit Course Details">
-                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#course-details">
-                                        <i class="mdi mdi-square-edit-outline mdi-18px"></i>
-                                    </button>                            
-                                </span>
-                            </p>
-                            <hr>
-                            <div class="list-group">
-                                <span><b>Course Name</b> : {{$course->name}}</span><br>
-                                <span><b>Cost</b> : KSH. {{$course->cost}}</span><br>
-                                <span><b>Start Date</b> : {{$course->start_date}}</span><br>
-                                <span><b>End Date</b> : {{$course->end_date}}</span><br>
-                            </div>
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-body">
                             <p>Course Cover Image
@@ -79,7 +61,7 @@
                             </p>
                             <hr>
                             <div class="list-group">
-                                <img src="{{ asset('storage/cover-images/'.$course->cover_image) }}" width="100%" height="auto">
+                                <img src="{{ asset('storage/cover-images/'.$course->cover_image) }}" width="100%" height="300px">
                             </div>
                         </div> <!-- end card-body -->
                     </div> <!-- end card -->
@@ -108,7 +90,7 @@
         </div>
         <div class="tab-pane" id="nav-requirements">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <p>Course Requirements
@@ -124,22 +106,18 @@
                         </div> <!-- end card-body -->
                     </div> <!-- end card -->
                 </div> <!-- end col -->
-            </div>
-        </div>
-        <div class="tab-pane" id="nav-objectives">
-            <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <p>Course Objectives
-                                <span class="float-right mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit Course Objectives">
-                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#course-objectives">
+                            <p>Course Required Uploads
+                                <span class="float-right mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit Course Required Uploads">
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#course-uploads">
                                         <i class="mdi mdi-square-edit-outline mdi-18px"></i>
                                     </button>                            
                                 </span>
                             </p><hr>
                             <div class="list-group">
-                                {!! $course->objectives !!}
+                                {!!$course->uploads!!}
                             </div>
                         </div> <!-- end card-body -->
                     </div> <!-- end card -->
@@ -170,37 +148,7 @@
                                 </span>
                             @endif
                         </div>
-            
-                        <div class="form-group">
-                            <label for="cost">Course Cost</label>
-                            <input class="form-control {{ $errors->has('cost') ? ' is-invalid' : '' }}" type="number" id="cost" name="cost" value="{{ $course->cost }}" required>
-                            @if ($errors->has('cost'))
-                                <span class="invalid-feedback" role="alert">
-                                    {{ $errors->first('cost') }}
-                                </span>
-                            @endif
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="start_date">Start Date</label>
-                            <input class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" type="date" name="start_date" value="{{ $course->start_date }}">
-                            @if ($errors->has('start_date'))
-                                <span class="invalid-feedback" role="alert">
-                                    {{ $errors->first('start_date') }}
-                                </span>
-                            @endif
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="end_date">End Date</label>
-                            <input class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" type="date" name="end_date" value="{{ $course->end_date }}">
-                            @if ($errors->has('end_date'))
-                                <span class="invalid-feedback" role="alert">
-                                    {{ $errors->first('end_date') }}
-                                </span>
-                            @endif
-                        </div>
-            
+
                         <div class="form-group mb-2 text-center">
                             <button class="btn btn-primary btn-block" type="submit">
                                 <i class="mdi mdi-content-save"></i> Submit
@@ -285,8 +233,8 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <!-- Course Objectives Edit modal -->
-    <div class="modal fade" id="course-objectives" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <!-- Course Uploads Edit modal -->
+    <div class="modal fade" id="course-uploads" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -299,17 +247,17 @@
                         @method('PUT')
             
                         <div class="form-group">
-                            <label for="objectives">Course Objectives</label>
-                            <textarea class="form-control {{ $errors->has('objectives') ? ' is-invalid' : '' }}" id="objectives" rows="5" name="objectives" required>{{ $course->objectives }}</textarea>
-                            @if ($errors->has('objectives'))
+                            <label for="uploads">Course Required Uploads</label>
+                            <textarea class="form-control {{ $errors->has('uploads') ? ' is-invalid' : '' }}" id="uploads" rows="5" name="uploads" required>{{ $course->uploads }}</textarea>
+                            @if ($errors->has('uploads'))
                                 <span class="invalid-feedback" role="alert">
-                                    {{ $errors->first('objectives') }}
+                                    {{ $errors->first('uploads') }}
                                 </span>
                             @endif
 
                             <script src="{{ asset('ckeditor/ckeditor/ckeditor.js') }}"></script>
                             <script>
-                                CKEDITOR.replace( 'objectives' );
+                                CKEDITOR.replace( 'uploads' );
                             </script>
                         </div>
             
@@ -359,64 +307,3 @@
     </div><!-- /.modal -->
 
 @endsection
-
-{{-- @extends('layouts.dashboard.app')
-
-@section('page-title','Courses')
-
-@section('breadcrumbs')
-    <ol class="breadcrumb m-0">
-        <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Courses</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('courses.show',$course) }}">{{ $course->name }}</a></li>
-        <li class="breadcrumb-item active">All</li>
-    </ol>
-@endsection
-
-@section('content')
-
-    <div class="row">        
-        <div class="col-lg-12 col-xl-8">
-            <div class="card">
-                <div class="card-body">
-                    <p>Course Details</p><hr>
-                    <div class="list-group">
-                        <span><b>Course Name</b> : {{$course->name}}</span><br>
-                        <span><b>Description</b> : {{$course->description}}</span><br>
-                        <span><b>Cost</b> : KSH. {{$course->cost}}</span><br>
-                    </div>
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
-
-        <div class="col-lg-12 col-xl-8">
-            <div class="card">
-                <div class="card-body">
-                    <p>Enter Course alias given below to Delete</p><hr>
-                    
-                    <form action="{{ route('courses.destroy', $course) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-
-                            <div class="form-group">
-                                <label for="name"><b>{{ $course->slug }}</b></label>
-                                <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="{{ $course->slug }}" required>
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        {{ $errors->first('name') }}
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="form-group mb-2 text-center">
-                                <button class="btn btn-danger btn-block" type="submit">
-                                    <i class="mdi mdi-content-save"></i> Delete Course
-                                </button>
-                            </div>
-                    </form>
-
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
-    </div>
-
-@endsection --}}

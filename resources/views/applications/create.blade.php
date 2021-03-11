@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('page-title','Courses')
+@section('page-title','Course Application')
 
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Courses</a></li>
-        <li class="breadcrumb-item active">Create</li>
+        <li class="breadcrumb-item active">Apply</li>
     </ol>
 @endsection
 
@@ -34,7 +34,22 @@
             </div>
 
             <div class="form-group">
-                <label for="requirements">General Requirements</label>
+                <label for="objectives">Course Objectives</label>
+                <textarea class="form-control {{ $errors->has('objectives') ? ' is-invalid' : '' }}" id="objectives" rows="5" name="objectives" required>{{ old('objectives') }}</textarea>
+                @if ($errors->has('objectives'))
+                    <span class="invalid-feedback" role="alert">
+                        {{ $errors->first('objectives') }}
+                    </span>
+                @endif
+
+                <script src="{{ asset('ckeditor/ckeditor/ckeditor.js') }}"></script>
+                <script>
+                    CKEDITOR.replace( 'objectives' );
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label for="requirements">Course Requirements</label>
                 <textarea class="form-control {{ $errors->has('requirements') ? ' is-invalid' : '' }}" id="requirements" rows="5" name="requirements" required>{{ old('requirements') }}</textarea>
                 @if ($errors->has('requirements'))
                     <span class="invalid-feedback" role="alert">
@@ -49,18 +64,33 @@
             </div>
 
             <div class="form-group">
-                <label for="uploads">Required Uploads <small>(Eg. 1. National ID (scanned pdf))</small></label>
-                <textarea class="form-control {{ $errors->has('uploads') ? ' is-invalid' : '' }}" id="uploads" rows="5" name="uploads" required>{{ old('uploads') }}</textarea>
-                @if ($errors->has('uploads'))
+                <label for="cost">Course Cost</label>
+                <input class="form-control {{ $errors->has('cost') ? ' is-invalid' : '' }}" type="number" id="cost" name="cost" value="{{ old('cost') }}" placeholder="Enter the Course cost" required>
+                @if ($errors->has('cost'))
                     <span class="invalid-feedback" role="alert">
-                        {{ $errors->first('uploads') }}
+                        {{ $errors->first('cost') }}
                     </span>
                 @endif
+            </div>
 
-                <script src="{{ asset('ckeditor/ckeditor/ckeditor.js') }}"></script>
-                <script>
-                    CKEDITOR.replace( 'uploads' );
-                </script>
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                <input class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" type="date" name="start_date" value="{{ old('start_date') }}" required>
+                @if ($errors->has('start_date'))
+                    <span class="invalid-feedback" role="alert">
+                        {{ $errors->first('start_date') }}
+                    </span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="end_date">End Date</label>
+                <input class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" type="date" name="end_date" value="{{ old('end_date') }}" required>
+                @if ($errors->has('end_date'))
+                    <span class="invalid-feedback" role="alert">
+                        {{ $errors->first('end_date') }}
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
@@ -81,4 +111,4 @@
         </form>
     </div>
 
-@endsection 
+@endsection

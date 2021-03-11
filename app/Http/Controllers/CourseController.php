@@ -19,7 +19,6 @@ class CourseController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('password.confirm')->only('destroy');
     }
 
     /**
@@ -59,21 +58,15 @@ class CourseController extends Controller
         $request->validate([
             'name' => 'required|string|unique:courses,name',
             'description' => 'required',
-            'objectives' => 'required',
+            'uploads' => 'nullable',
             'requirements'=> 'required',
-            'cost' => 'required|integer',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
             'cover_image' => 'required|file'
         ]);
 
         $course->name = $request->name;
         $course->description = $request->description;
-        $course->objectives = $request->objectives;
+        $course->uploads = $request->uploads;
         $course->requirements = $request->requirements;
-        $course->cost = $request->cost;
-        $course->start_date = $request->start_date;
-        $course->end_date = $request->end_date;
 
         //Handle File upload
         if($request->hasFile('cover_image')){
@@ -133,15 +126,9 @@ class CourseController extends Controller
 
             $request->validate([
                 'name' => 'required|string',
-                'cost' => 'required|integer',
-                'start_date' => 'required|date',
-                'end_date' => 'required|date|after_or_equal:start_date',
             ]);
 
             $course->name = $request->name;
-            $course->cost = $request->cost;
-            $course->start_date = $request->start_date;
-            $course->end_date = $request->end_date;
         }
 
         if (isset($request->description)) {
@@ -153,13 +140,13 @@ class CourseController extends Controller
             $course->description = $request->description;
         }
 
-        if (isset($request->objectives)) {
+        if (isset($request->uploads)) {
 
             $request->validate([
-                'objectives' => 'required',
+                'uploads' => 'required',
             ]);
 
-            $course->objectives = $request->objectives;
+            $course->uploads = $request->uploads;
         }
 
         if (isset($request->requirements)) {
@@ -182,8 +169,6 @@ class CourseController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.Str::random('5').'.'.$extension;
             //Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover-images',$fileNameToStore);
-
             $path = $request->file('cover_image')->storeAs('cover-images', $fileNameToStore, 'public');
 
         }else{
@@ -205,6 +190,14 @@ class CourseController extends Controller
      */
     public function destroy(Request $request, Course $course)
     {
+        if (!isset($request->name)) {
+            return view('courses.delete',['course'=>$course]);
+        }
+
+        if ($request->name != $course->slug) {
+            return back()->with('error', 'Incorrect Value');
+        }
+
         $course->delete();
 
         return redirect()->route('courses.index')->with('success','Course Deleted Successfully');

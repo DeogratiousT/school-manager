@@ -19,11 +19,8 @@ class CreateCoursesTable extends Migration
             $table->string('slug')->unique();
             $table->longText('description');
             $table->longText('requirements');
-            $table->longText('objectives')->nullable();
-            $table->integer('cost')->nullable();
+            $table->longText('uploads')->nullable();
             $table->string('cover_image');
-            $table->date('start_date');
-            $table->date('end_date');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Course;
 
 class HomeController extends Controller
 {
@@ -27,12 +28,14 @@ class HomeController extends Controller
     }
 
     public function home()
-    {
+    {        
         return view('home_test');
     }
 
     public function landing()
     {
-        return view('landing_test');
+        $courses = Course::all();
+
+        return view('landing_test',['courses'=>$courses]);
     }
 }

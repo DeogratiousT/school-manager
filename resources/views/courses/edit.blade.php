@@ -12,7 +12,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('courses.update',$course) }}" method="POST">
+        <form action="{{ route('courses.update',$course) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             
@@ -37,35 +37,45 @@
             </div>
 
             <div class="form-group">
-                <label for="cost">Course Cost</label>
-                <input class="form-control {{ $errors->has('cost') ? ' is-invalid' : '' }}" type="number" id="cost" name="cost" value="{{ $course->cost }}" required>
-                @if ($errors->has('cost'))
+                <label for="requirements">Course Requirements</label>
+                <textarea class="form-control {{ $errors->has('requirements') ? ' is-invalid' : '' }}" id="requirements" rows="5" name="requirements" required>{{ $course->requirements }}</textarea>
+                @if ($errors->has('requirements'))
                     <span class="invalid-feedback" role="alert">
-                        {{ $errors->first('cost') }}
+                        {{ $errors->first('requirements') }}
                     </span>
                 @endif
+
+                <script src="{{ asset('ckeditor/ckeditor/ckeditor.js') }}"></script>
+                <script>
+                    CKEDITOR.replace( 'requirements' );
+                </script>
             </div>
 
             <div class="form-group">
-                <label for="start_date">Start Date</label>
-                <input class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" type="date" name="start_date" value="{{ $course->start_date }}">
-                @if ($errors->has('start_date'))
+                <label for="uploads">Course Required Uploads</label>
+                <textarea class="form-control {{ $errors->has('uploads') ? ' is-invalid' : '' }}" id="uploads" rows="5" name="uploads" required>{{ $course->uploads }}</textarea>
+                @if ($errors->has('uploads'))
                     <span class="invalid-feedback" role="alert">
-                        {{ $errors->first('start_date') }}
+                        {{ $errors->first('uploads') }}
                     </span>
                 @endif
+
+                <script src="{{ asset('ckeditor/ckeditor/ckeditor.js') }}"></script>
+                <script>
+                    CKEDITOR.replace( 'uploads' );
+                </script>
             </div>
 
             <div class="form-group">
-                <label for="end_date">End Date</label>
-                <input class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" type="date" name="end_date" value="{{ $course->end_date }}">
-                @if ($errors->has('end_date'))
+                <label for="cover_image">Course Cover Image</label>
+                <input type="file" id="cover_image" name="cover_image" class="form-control-cover_image {{ $errors->has('cover_image') ? ' is-invalid' : '' }}">
+                @if ($errors->has('cover_image'))
                     <span class="invalid-feedback" role="alert">
-                        {{ $errors->first('end_date') }}
+                        {{ $errors->first('cover_image') }}
                     </span>
                 @endif
             </div>
-
+            
             <div class="form-group mb-2 text-center">
                 <button class="btn btn-primary btn-block" type="submit">
                     <i class="mdi mdi-content-save"></i> Submit

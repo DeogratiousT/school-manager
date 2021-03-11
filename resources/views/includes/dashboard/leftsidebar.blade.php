@@ -35,7 +35,7 @@
             </a>
         </li> --}}
 
-        <li class="side-nav-item">
+        {{-- <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-store"></i>
                 <span> Ecommerce </span>
@@ -71,7 +71,7 @@
                     <a href="apps-ecommerce-orders.html">Orders</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
     </ul>
     <!-- End Sidebar -->
 
