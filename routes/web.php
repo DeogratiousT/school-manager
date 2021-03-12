@@ -23,3 +23,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('courses', 'CourseController');
 Route::get('course-application','StudentApplicationController@create')->name('course-application');
 Route::get('course-application/store','StudentApplicationController@store')->name('course-application-store');
+
+Route::get('learn','LearnController@index')->name('learn-index');

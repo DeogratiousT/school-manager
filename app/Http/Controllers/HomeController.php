@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::orderBy('created_at','DESC')->take(3)->get();
 
         return view('home.index',['courses'=>$courses]);
     }
