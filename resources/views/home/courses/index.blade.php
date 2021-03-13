@@ -24,14 +24,13 @@
                                             <img class="card-img-top" style="height:220px;" src="{{ asset('storage/cover-images/'.$course->cover_image) }}" alt="Cover Image">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $course->name }}</h5>
-                                                <a href="" class="btn btn-primary">View Course</a>
+                                                <a href="{{ route('learn-show',['course'=>$course]) }}" class="btn btn-primary">View Course</a>
                                                 <p class="card-text">
                                                     <small class="text-muted">Last updated 3 mins ago</small>
                                                 </p>
                                             </div>
                                         </div> <!-- end card-->
                                     @endforeach
-                                    <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md--></div>
                                 </div> <!-- end card-deck-->
                             </div> <!-- end card-deck-wrapper-->
                         </div> <!-- end col-->

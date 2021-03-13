@@ -3,7 +3,7 @@
     <div class="container">
 
         <!-- logo -->
-        <a href="index.html" class="navbar-brand mr-lg-5">
+        <a href="{{ route('home') }}" class="navbar-brand mr-lg-5">
             <img src="{{ asset('images/logo.png') }}" alt="" class="logo-dark" height="18" />
         </a>
 
@@ -18,7 +18,7 @@
             <!-- left menu -->
             <ul class="navbar-nav mr-auto align-items-center">
                 <li class="nav-item mx-lg-1">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item mx-lg-1">
                     <a class="nav-link" href="{{ route('learn-index') }}">Courses</a>

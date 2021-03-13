@@ -87,7 +87,7 @@
                                             <img class="card-img-top" style="height:220px;" src="{{ asset('storage/cover-images/'.$course->cover_image) }}" alt="Cover Image">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $course->name }}</h5>
-                                                <a href="" class="btn btn-primary">View Course</a>
+                                                <a href="{{ route('learn-show',['course'=>$course]) }}" class="btn btn-primary">View Course</a>
                                                 <p class="card-text">
                                                     <small class="text-muted">Last updated 3 mins ago</small>
                                                 </p>
@@ -104,7 +104,7 @@
                     <div class="row mt-4">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <a href="" class="btn btn-outline-primary">Browse All Courses</a>
+                                <a href="{{ route('learn-index') }}" class="btn btn-outline-primary">Browse All Courses</a>
                             </div>
                         </div>
                     </div>
