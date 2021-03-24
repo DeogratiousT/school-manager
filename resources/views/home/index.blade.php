@@ -1,70 +1,7 @@
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-
-    
-<!-- Mirrored from coderthemes.com/hyper/creative/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2019 12:45:33 GMT -->
-<head>
-        <meta charset="utf-8" />
-        <title>School Manager</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
-
-        <!-- App css -->
-        <link href="{{ asset('css/creative/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('css/creative/app-creative.min.css') }}" rel="stylesheet" type="text/css" />
-
-    </head>
-
-    <body>
-
-        <!-- NAVBAR START -->
-        <nav class="navbar navbar-expand-lg py-lg-3 topnav-navbar-dark">
-            <div class="container">
-
-                <!-- logo -->
-                <a href="index.html" class="navbar-brand mr-lg-5">
-                    <img src="{{ asset('images/logo.png') }}" alt="" class="logo-dark" height="18" />
-                </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="mdi mdi-menu"></i>
-                </button>
-
-                <!-- menus -->
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-                    <!-- left menu -->
-                    <ul class="navbar-nav mr-auto align-items-center">
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link active" href="#">Home</a>
-                        </li>
-                        <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="#">Courses</a>
-                        </li>
-                    </ul>
-
-                    <!-- right menu -->
-                    <ul class="navbar-nav ml-auto align-items-center">
-                        <li class="nav-item mr-0">
-                            <a href="{{ route('login') }}" class="nav-link">Log In</a>
-                            {{-- <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" target="_blank" class="nav-link d-lg-none">Purchase now</a>
-                            <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" target="_blank" class="btn btn-sm btn-light btn-rounded d-none d-lg-inline-flex">
-                                <i class="mdi mdi-basket mr-2"></i> Purchase Now
-                            </a> --}}
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-        <!-- NAVBAR END -->
-
-        {{-- <!-- START HERO -->
+@section('content')
+      {{-- <!-- START HERO -->
         <section class="hero-section">
             <div class="container">
                 <div class="row align-items-center">
@@ -150,7 +87,7 @@
                                             <img class="card-img-top" style="height:220px;" src="{{ asset('storage/cover-images/'.$course->cover_image) }}" alt="Cover Image">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $course->name }}</h5>
-                                                <a href="" class="btn btn-primary">View Course</a>
+                                                <a href="{{ route('learn-show',['course'=>$course]) }}" class="btn btn-primary">View Course</a>
                                                 <p class="card-text">
                                                     <small class="text-muted">Last updated 3 mins ago</small>
                                                 </p>
@@ -167,7 +104,7 @@
                     <div class="row mt-4">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <a href="" class="btn btn-outline-primary">Browse All Courses</a>
+                                <a href="{{ route('learn-index') }}" class="btn btn-outline-primary">Browse All Courses</a>
                             </div>
                         </div>
                     </div>
@@ -252,85 +189,4 @@
         </section>
         <!-- END CONTACT -->
 
-        <!-- START FOOTER -->
-        <footer class="bg-dark py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <img src="{{ asset('images/logo.png') }}" alt="" class="logo-dark" height="18" />
-                        <p class="text-white-50 mt-4">Lorem ipsum dolor sit amet consectetur adipisicing 
-                            <br>elit. Excepturi, sit illum enim accusamus hic nobis. Incidunt
-                            <br>magnam atque odio ducimus provident, ipsum deserunt.</p>
-
-                        <ul class="social-list list-inline mt-3">
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 mt-3 mt-lg-0">
-                        <h5 class="text-white">Company</h5>
-
-                        <ul class="list-unstyled pl-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Documentation</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Affiliate Program</a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 mt-3 mt-lg-0">
-                        <h5 class="text-white">Apps</h5>
-
-                        <ul class="list-unstyled pl-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Ecommerce Pages</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Email</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Social Feed</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Projects</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Tasks Management</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2 mt-3 mt-lg-0">
-                        <h5 class="text-white">Discover</h5>
-
-                        <ul class="list-unstyled pl-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Help Center</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Our Products</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mt-5">
-                            <p class="text-white-50 mt-4 text-center mb-0">© 2021 Hyper</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- END FOOTER -->
-
-        <!-- bundle -->
-        <script src="{{ asset('js/creative/vendor.min.js') }}"></script>
-        <script src="{{ asset('js/creative/app.min.js') }}"></script>
-
-    </body>
-
-
-<!-- Mirrored from coderthemes.com/hyper/creative/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2019 12:45:48 GMT -->
-</html>
+@endsection
