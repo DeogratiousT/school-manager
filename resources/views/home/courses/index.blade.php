@@ -3,7 +3,7 @@
 @section('content')
     <main id="main" data-aos="fade-in">
 
-        <!-- ======= Breadcrumbs ======= -->
+        <!-- ==== Breadcrumbs ==== -->
         <div class="breadcrumbs">
             <div class="container">
                 <h2>All Courses</h2>
