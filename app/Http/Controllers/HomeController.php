@@ -29,4 +29,14 @@ class HomeController extends Controller
         return view('home.index',['courses'=>$courses]);
     }
 
+    public function contactUs()
+    {
+        return view('home.contact_us');
+    }
+
+    public function aboutUs()
+    {
+        return view('home.about_us');
+    }
+
 }

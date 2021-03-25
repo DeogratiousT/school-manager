@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron text-dark text-center" style="background-image: linear-gradient(to right, rgba(54,136,252,1), rgba(238,242,247,0), rgba(54,136,252,1));">
-        <h2>{{ $course->name }}</h2>
-    </div>
+<main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>{{ $course->name }}</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
     <div class="py-2 m-0">
         <div class="container">
             <div class="media mb-2">
@@ -29,10 +34,11 @@
 
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <a href="{{ route('learn-enroll',['course'=>$course]) }}" class="btn btn-primary d-block p-2">Enroll Course</a>
+                    <a href="{{ route('learn-enroll',['course'=>$course]) }}" class="btn btn-success d-block p-2">Enroll Course</a>
                 </div>
             </div>
 
         </div>
     </div>
+</main>
 @endsection
