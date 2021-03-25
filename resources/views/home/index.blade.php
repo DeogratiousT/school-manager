@@ -1,57 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-      {{-- <!-- START HERO -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-5">
-                        <div class="mt-md-4">
-                            <div>
-                                <span><i class="mdi mdi-emoticon-happy text-warning mdi-24px"></i></span>
-                                <span class="text-white-50 ml-1">Welcome to new Our Academy</span>
-                            </div>
-                            <h2 class="text-white font-weight-normal mb-4 mt-3 hero-title">
-                                Sunshine Academy
-                            </h2>
-
-                            <p class="mb-4 font-16 text-white-50">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci nam minus quo rem distinctio aperiam dolores ut. Ratione accusantium delectus, eius eaque sit facilis reprehenderit, quis et laboriosam modi voluptatibus?</p>
-
-                            <a href="#" target="_blank" class="btn btn-success">Start Learning <i
-                                    class="mdi mdi-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 offset-md-2">
-                        <div class="text-md-right mt-3 mt-md-0">
-                            <img src="{{ asset('images/startup.svg') }}" alt="" class="img-fluid" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END HERO --> --}}
-
         <div id="carouselExampleCaption" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/small/small-1.jpg') }}" alt="..." class="d-block img-fluid" style="width:100%; height:550px">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 class="text-white">View Courses</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <img src="{{ asset('images/small/small-1.jpg') }}" alt="..." class="d-block img-fluid" style="width:100%; height:500px; opacity:0.9;">
+                    <div class="carousel-caption d-none d-md-block" style="background-color:#fff;opacity:0.75; border-radius:3px">
+                        <h3 class="text-dark"><b>Start Learning</b></h3>
+                        <p class="text-dark">Begin your academic excellence by enrolling in the course of your choice from out catalogue</p>
+                        <a href="{{ route('learn-index') }}" class="btn btn-outline-success">Start Learning</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('images/small/small-3.jpg') }}" alt="..." class="d-block img-fluid" style="width:100%; height:550px">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 class="text-white">Latest Courses</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <img src="{{ asset('images/small/small-3.jpg') }}" alt="..." class="d-block img-fluid" style="width:100%; height:500px; opacity:0.9;">
+                    <div class="carousel-caption d-none d-md-block" style="background-color:#fff;opacity:0.75; border-radius:3px">
+                        <h3 class="text-dark"><b>Latest Courses</b></h3>
+                        <p class="text-dark">Explore our most Recent accredited courses</p>
+                        <a href="#latest-courses" class="btn btn-outline-success">Latest Courses</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('images/small/small-2.jpg') }}" alt="..." class="d-block img-fluid" style="width:100%; height:550px">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 class="text-white">Start Learning</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <img src="{{ asset('images/small/small-2.jpg') }}" alt="..." class="d-block img-fluid" style="width:100%; height:500px; opacity:0.9;">
+                    <div class="carousel-caption d-none d-md-block" style="background-color:#fff;opacity:0.75; border-radius:3px">
+                        <h3 class="text-dark"><b>Register</b></h3>
+                        <p class="text-dark">Register an account with us today and learn with us</p>
+                        <a href="{{ route('register') }}" class="btn btn-outline-success">Register</a>
                     </div>
                 </div>
             </div>
@@ -66,13 +39,13 @@
         </div>
 
         <!-- START FEATURES 1 -->
-        <section class="py-5 bg-light-lighten border-top border-bottom border-light">
+        <section class="py-5 bg-light-lighten border-top border-bottom border-light" id="latest-courses">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            <h3 class="text-primary">Latest Courses</h3>
-                            <p class="text-muted mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. quis quae, dicta fugiat impedit obcaecati!</p>
+                            <h3 class="text-success"><b>Latest Courses</b></h3>
+                            <p class="text-muted mt-2">Explore our most recently accreddited courses</p>
                         </div>
                     </div>
                 </div>
@@ -83,14 +56,15 @@
                             <div class="card-deck-wrapper">
                                 <div class="card-deck">
                                     @foreach ($courses as $course)
-                                        <div class="card d-block">
+                                        <div class="card" id="course-card">
                                             <img class="card-img-top" style="height:220px;" src="{{ asset('storage/cover-images/'.$course->cover_image) }}" alt="Cover Image">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ $course->name }}</h5>
-                                                <a href="{{ route('learn-show',['course'=>$course]) }}" class="btn btn-primary">View Course</a>
-                                                <p class="card-text">
-                                                    <small class="text-muted">Last updated 3 mins ago</small>
-                                                </p>
+                                                <h4 class="card-title"><a href="{{ route('learn-show',['course'=>$course]) }}" class="btn btn-link text-success" style="text-align:left; font-size:0.75em;">{{ $course->name }}</a></h4>
+                                            </div>
+                                            <div class="card-footer">
+                                                <i class="bx bx-user"></i>&nbsp;20
+                                                &nbsp;&nbsp;
+                                                <i class="bx bx-heart"></i>&nbsp;85
                                             </div>
                                         </div> <!-- end card-->
                                     @endforeach
@@ -104,7 +78,7 @@
                     <div class="row mt-4">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <a href="{{ route('learn-index') }}" class="btn btn-outline-primary">Browse All Courses</a>
+                                <a href="{{ route('learn-index') }}" class="btn btn-outline-success">Browse All Courses</a>
                             </div>
                         </div>
                     </div>
@@ -119,74 +93,5 @@
             </div>
         </section>
         <!-- END FEATURES 1 -->
-        
-        <!-- START CONTACT -->
-        <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h3>Get In <span class="text-primary">Touch</span></h3>
-                            <p class="text-muted mt-2">Please fill out the following form and we will get back to you shortly. For more 
-                                <br>information please contact us.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row align-items-center mt-3">
-                    <div class="col-md-4">
-                        <p class="text-muted"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+1 234 56 7894</span></p>
-                        <p class="text-muted mt-4"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">info@gmail.com</span></p>
-                        <p class="text-muted mt-4"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">4461 Cedar Street Moro, AR 72368</span></p>
-                        <p class="text-muted mt-4"><span class="font-weight-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p>
-                    </div>
-
-                    <div class="col-md-8">
-                        <form>
-                            <div class="row mt-4">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="fullname">Your Name</label>
-                                        <input class="form-control form-control-light" type="text" id="fullname" placeholder="Name...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="emailaddress">Your Email</label>
-                                        <input class="form-control form-control-light" type="email" required="" id="emailaddress" placeholder="Enter you email...">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-1">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="subject">Your Subject</label>
-                                        <input class="form-control form-control-light" type="text" id="subject" placeholder="Enter subject...">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-1">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="comments">Message</label>
-                                        <textarea id="comments" rows="4" class="form-control form-control-light" placeholder="Type your message here..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-2">
-                                <div class="col-12 text-right">
-                                    <button class="btn btn-primary">Send a Message <i
-                                        class="mdi mdi-telegram ml-1"></i> </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END CONTACT -->
 
 @endsection

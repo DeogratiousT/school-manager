@@ -4,10 +4,11 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-          <h2>Contact Us</h2>
-          <p>For any querries or concerns feel free to leave us a message below</p>
+            <h2>Get In <span class="text-dark">Touch</span></h2>
+            <p class="mt-2">Please fill out the following form and we will get back to you shortly. For more <br>information please contact us.</p>
         </div>
       </div><!-- End Breadcrumbs -->
+    </div>
   
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="contact">
@@ -17,8 +18,7 @@
   
         <div class="container" data-aos="fade-up">
   
-          <div class="row mt-5">
-  
+          <div class="row mt-5">  
             <div class="col-lg-4">
               <div class="info">
                 <div class="address">
