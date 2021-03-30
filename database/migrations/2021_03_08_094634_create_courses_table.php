@@ -17,10 +17,6 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->longText('description');
-            $table->longText('requirements');
-            $table->longText('uploads')->nullable();
-            $table->string('cover_image');
             $table->timestamps();
         });
     }

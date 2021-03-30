@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.app')
+@extends('layouts.app')
 
 @section('page-title','Courses')
 
@@ -21,7 +21,6 @@
             <table id="courses-laratable" class="table table-hover table-centered w-100 dt-responsive nowrap">
                 <thead class="thead-light">
                     <tr>
-                        {{-- <th>Profile</th> --}}
                         <th>Name</th>
                         <th>Created At</th>
                         <th>Action</th>

@@ -10,7 +10,7 @@ class Course extends Model
 {
     use HasSlug;
 
-    protected $fillable = ['name','slug','description','uploads','cover_image'];
+    protected $fillable = ['name','slug'];
 
     /**
      * Get the options for generating the slug.

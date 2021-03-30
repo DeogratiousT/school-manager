@@ -28,10 +28,10 @@
 
                         <!-- Logo -->
                         <div class="auth-brand text-center text-lg-left">
-                            <a href="{{ route('home') }}" class="logo-dark">
+                            <a href="{{ route('dashboard') }}" class="logo-dark">
                                 <span><img src="{{ asset('images/logo-dark.png') }}" alt="" height="18"></span>
                             </a>
-                            {{-- <a href="{{ route('home') }}" class="logo-light">
+                            {{-- <a href="{{ route('dashboard') }}" class="logo-light">
                                 <span><img src="{{ asset('images/logo.png') }}" alt="" height="18"></span>
                             </a> --}}
                         </div>

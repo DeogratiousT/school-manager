@@ -1,63 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
+<!-- Mirrored from coderthemes.com/hyper/creative/layouts-detached.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2019 12:46:41 GMT -->
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8" />
+    <title>School Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
-  <title>School Manager</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!-- App css -->
+    <link href="{{ asset('css/creative/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/creative/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+    <link href="{{ asset('css/creative/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
+    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
 
-  <!-- Favicons -->
-  <link href="{{ asset('favicon.ico') }}" rel="icon">
-  <link href="{{ asset('favicon.ico') }}" rel="apple-touch-icon">
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    </head>
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('landing/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landing/icofont/icofont.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landing/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landing/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ asset('landing/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landing/animate.css/animate.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landing/aos/aos.css') }}" rel="stylesheet">
+    <body data-layout="detached" class="loading">
+        <!-- Topbar Start -->
+        @include('includes.topnav')
+        <!-- end Topbar -->
 
-  <!-- Template Main CSS File -->
-  <link href="{{ asset('css/landing/style.css') }}" rel="stylesheet">
+        <!-- Start Content-->
+        <div class="container-fluid">
 
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-</head>
+            <!-- Begin page -->
+            <div class="wrapper">
 
-<body>
-    <div id="app">
-        <!-- ======= Header ======= -->
-        @include('includes.navbar')
-        <!-- End Header -->
+                <!-- ========== Left Sidebar Start ========== -->
+                    @include('includes.leftsidebar')
+                <!-- Left Sidebar End -->
 
-        <main>
-            @yield('content')
-        </main>
+                <div class="content-page">
+                    <div class="content">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        @yield('breadcrumbs')
+                                    </div>
+                                    <h4 class="page-title">
+                                        @yield('page-title')
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title -->
 
-        <!-- START FOOTER -->
-        @include('includes.footer')
-        <!-- END FOOTER -->
-    </div>
+                        <!-- Messages --> 
+                        @include('includes.messages')
+                        <!-- End Messages -->
 
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('landing/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('landing/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('landing/jquery.easing/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('landing/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('landing/waypoints/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('landing/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('landing/owl.carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('landing/aos/aos.js') }}"></script>
+                        @yield('content')
 
-  <!-- Template Main JS File -->
-  <script src="{{ asset('js/landing/main.js') }}"></script>
+                    </div> <!-- End Content -->
 
-</body>
+                    <!-- Footer Start -->
+                    @include('includes.footer')
+                    <!-- end Footer -->
+                </div> <!-- content-page -->
+
+            </div> <!-- end wrapper-->
+        </div>
+        <!-- END Container -->
+
+        <!-- Right Sidebar -->
+            @include('includes.rightsidebar')
+        <!-- /Right-bar -->
+
+        <!-- bundle -->
+        <script src="{{ asset('js/creative/vendor.min.js') }}"></script>
+        <script src="{{ asset('js/creative/app.min.js') }}"></script>
+
+        @stack('scripts')
+
+        <!-- Apex js -->
+        {{-- <script src="assets/js/vendor/apexcharts.min.js"></script> --}}
+
+        <!-- Todo js -->
+        {{-- <script src="assets/js/ui/component.todo.js"></script> --}}
+
+        <!-- demo app -->
+        {{-- <script src="assets/js/pages/demo.dashboard-crm.js"></script> --}}
+        <!-- end demo js-->
+        
+    </body>
+
+<!-- Mirrored from coderthemes.com/hyper/creative/layouts-detached.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2019 12:46:42 GMT -->
 </html>

@@ -18,14 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/contact-us', 'HomeController@contactUs')->name('contact-us');
-Route::get('/about-us', 'HomeController@aboutUs')->name('about-us');
-Route::resource('courses', 'CourseController');
-Route::get('course-application','StudentApplicationController@create')->name('course-application');
-Route::get('course-application/store','StudentApplicationController@store')->name('course-application-store');
+Route::middleware(['auth'])->group(function () {
 
-Route::get('learn','LearnController@index')->name('learn-index');
-Route::get('learn/{course}','LearnController@show')->name('learn-show');
-Route::get('learn/{course}/enroll','LearnController@enroll')->name('learn-enroll');
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('courses', 'CourseController');
+
+});

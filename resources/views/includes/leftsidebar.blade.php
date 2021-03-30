@@ -13,7 +13,7 @@
         <li class="side-nav-title side-nav-item">Navigation</li>
 
         <li class="side-nav-item">
-            <a href="{{ route('home') }}" class="side-nav-link">
+            <a href="{{ route('dashboard') }}" class="side-nav-link">
                 <i class="mdi mdi-home"></i>
                 <span> Dashboard </span>
             </a>

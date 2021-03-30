@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Course;
 
 class HomeController extends Controller
 {
@@ -14,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -24,19 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('created_at','DESC')->take(3)->get();
-
-        return view('home.index',['courses'=>$courses]);
+        return view('welcome');
     }
-
-    public function contactUs()
-    {
-        return view('home.contact_us');
-    }
-
-    public function aboutUs()
-    {
-        return view('home.about_us');
-    }
-
 }

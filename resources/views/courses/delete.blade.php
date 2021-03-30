@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.app')
+@extends('layouts.app')
 
 @section('page-title','Courses')
 
@@ -19,7 +19,6 @@
                     <p>Course Details</p><hr>
                     <div class="list-group">
                         <span><b>Course Name</b> : {{$course->name}}</span><br>
-                        <span><b>Description</b> : {{$course->description}}</span>
                     </div>
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
