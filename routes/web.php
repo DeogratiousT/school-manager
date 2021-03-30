@@ -22,5 +22,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('courses', 'CourseController');
+    Route::resource('course-semesters', 'CourseSemesterController');
+    Route::resource('years', 'YearController');
+    Route::resource('courses.years', 'CourseYearController');
+
+    Route::resource('academic-years', 'AcademicYearController');
+    Route::resource('academic-semesters', 'AcademicSemesterController');
 
 });

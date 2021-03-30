@@ -28,6 +28,34 @@
             </a>
         </li>
 
+        <li class="side-nav-item">
+            <a href="{{ route('course-semesters.index') }}" class="side-nav-link">
+                <i class="mdi mdi-folder"></i>
+                <span> Course Semesters </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{ route('years.index') }}" class="side-nav-link">
+                <i class="mdi mdi-folder"></i>
+                <span> Years </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{ route('academic-years.index') }}" class="side-nav-link">
+                <i class="mdi mdi-folder"></i>
+                <span>Academic Years </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{ route('academic-semesters.index') }}" class="side-nav-link">
+                <i class="mdi mdi-folder"></i>
+                <span>Academic Semesters </span>
+            </a>
+        </li>
+
         {{-- <li class="side-nav-item">
             <a href="apps-chat.html" class="side-nav-link">
                 <i class="uil-comments-alt"></i>

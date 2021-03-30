@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Course extends Model
+class Grade extends Model
 {
     use HasSlug;
 
-    protected $fillable = ['name','slug'];
+    protected $fillable = ['name','slug','course_id','academic_year_id'];
 
     /**
      * Get the options for generating the slug.
@@ -27,13 +27,5 @@ class Course extends Model
         return 'slug';
     }
 
-    public function studentApplication()
-    {
-        return $this->hasMany('App\Models\StudentApplication');
-    }
-
-    public function years()
-    {
-        return $this->belongsToMany('App\Models\Year','course_years','course_id','year_id');
-    }
+    
 }
