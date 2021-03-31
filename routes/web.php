@@ -29,4 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('academic-years', 'AcademicYearController');
     Route::resource('academic-semesters', 'AcademicSemesterController');
 
+    Route::resource('counties', 'CountyController');
+    Route::resource('units', 'UnitController');
+
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\County;
 use Illuminate\Http\Request;
+use Freshbitsweb\Laratables\Laratables;
 
 class CountyController extends Controller
 {
@@ -14,7 +15,10 @@ class CountyController extends Controller
      */
     public function index()
     {
-        //
+        if (request()->ajax()) {
+            return Laratables::recordsOf(County::class);
+        }
+        return view('counties.index');
     }
 
     /**

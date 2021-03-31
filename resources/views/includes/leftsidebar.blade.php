@@ -56,6 +56,20 @@
             </a>
         </li>
 
+        <li class="side-nav-item">
+            <a href="{{ route('units.index') }}" class="side-nav-link">
+                <i class="mdi mdi-folder"></i>
+                <span>Units</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{ route('counties.index') }}" class="side-nav-link">
+                <i class="mdi mdi-folder"></i>
+                <span>Counties</span>
+            </a>
+        </li>
+
         {{-- <li class="side-nav-item">
             <a href="apps-chat.html" class="side-nav-link">
                 <i class="uil-comments-alt"></i>

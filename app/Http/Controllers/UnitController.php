@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Freshbitsweb\Laratables\Laratables;
+use App\Laratables\UnitsLaratables;
 
 class UnitController extends Controller
 {
@@ -14,7 +16,11 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        if (request()->ajax()) {
+            return Laratables::recordsOf(Unit::class , UnitsLaratables::class);
+        }
+
+        return view('units.index');
     }
 
     /**
@@ -24,7 +30,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('units.create');
     }
 
     /**
@@ -35,7 +41,12 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Unit::create($request->validate([
+            'name' => 'required',
+            'hours' => 'required',
+        ]));
+
+        return redirect()->route('units.index')->with('success','Unit Created Successfully');
     }
 
     /**
