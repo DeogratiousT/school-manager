@@ -16,6 +16,7 @@
     <link href="{{ asset('css/creative/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css/creative/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
 
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 

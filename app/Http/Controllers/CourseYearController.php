@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseYear;
+use App\Models\CourseSemester;
 use App\Models\Course;
 use App\Models\Year;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class CourseYearController extends Controller
      */
     public function index(Course $course)
     {
-        return view('course-years.index',['course'=>$course]);
+        $semesters = CourseSemester::all();
+        return view('course-years.index',['course'=>$course, 'semesters'=>$semesters]);
     }
 
     /**

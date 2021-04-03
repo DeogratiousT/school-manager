@@ -12,4 +12,5 @@ class CourseYearSemester extends Model
     {
         return $this->belongsToMany('App\Models\Unit','course_year_semester_units','course_year_semester_id','unit_id');
     }
+
 }

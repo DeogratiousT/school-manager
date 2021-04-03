@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
-@section('page-title','Courses')
+@section('page-title','Course Semester')
 
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
-        <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Courses</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('course-semesters.index') }}">Course Semester</a></li>
         <li class="breadcrumb-item active">Create</li>
     </ol>
 @endsection
 
 @section('content')
     <div class="container">
-        <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('course-semesters.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name">Course Name</label>
+                <label for="name">Course Semester Name</label>
                 <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Enter the Course Name" required>
                 @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">

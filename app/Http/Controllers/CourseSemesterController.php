@@ -41,10 +41,10 @@ class CourseSemesterController extends Controller
     public function store(Request $request)
     {
         CourseSemester::create($request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:course_semesters,name',
         ]));
 
-        return redirect()->route('courses-semesters.index')->with('success','Course Semester Created Successfully');
+        return redirect()->route('course-semesters.index')->with('success','Course Semester Created Successfully');
     }
 
     /**

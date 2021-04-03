@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseYearSemester;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseYearSemesterController extends Controller
@@ -35,7 +36,14 @@ class CourseYearSemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        CourseYearSemester::updateOrCreate([
+            'course_id' => Course::where('slug',$request->course)->pluck('id')->first(),
+            'year_id' => $request->year,
+            'course_semester_id' => $request->course_semester_id,
+        ]);
+
+        return redirect()->route('courses.years.index',$request->course)->with('success','Semester added Successfully');
     }
 
     /**
