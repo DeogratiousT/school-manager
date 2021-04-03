@@ -6,6 +6,7 @@ use App\Models\CourseYear;
 use App\Models\CourseSemester;
 use App\Models\Course;
 use App\Models\Year;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class CourseYearController extends Controller
@@ -18,7 +19,8 @@ class CourseYearController extends Controller
     public function index(Course $course)
     {
         $semesters = CourseSemester::all();
-        return view('course-years.index',['course'=>$course, 'semesters'=>$semesters]);
+        $units = Unit::all();
+        return view('course-years.index',['course'=>$course, 'semesters'=>$semesters, 'units'=>$units]);
     }
 
     /**

@@ -42,52 +42,55 @@
                         <div class="card-body">
                             <div class="float-left">
                                 <h4>Semesters</h4>
-                                <button type="button" class="btn btn-info" onclick="event.preventDefault();  $('#{{ 'add-'.$course->id.'-'.$year->id.'-semester' }}').modal('toggle');"><i class="mdi mdi-plus-circle mr-1"></i> Add Course Year Semester</button>
-
-                                <!-- Large modal -->
-                                <div class="modal fade" id="{{ 'add-'.$course->id.'-'.$year->id.'-semester' }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myLargeModalLabel">{{ $course->name }} <br> <span style="font-size:0.75em"> Add Semester to {{ $year->name }}</span></h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('courses.years.semesters.store',['course'=>$course, 'year'=>$year]) }}" method="POST">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="course_semester_id">Semester</label>
-                                                        <select class="form-control {{ $errors->has('course_semester_id') ? ' is-invalid' : '' }}" id="course_semester_id" name="course_semester_id" required>
-                                                            @foreach ($semesters as $semester)
-                                                                <option value="{{ $semester->id }}">{{ $semester->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @if ($errors->has('course_semester_id'))
-                                                            <span class="invalid-feedback" role="alert">
-                                                                {{ $errors->first('course_semester_id') }}
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                    
-                                                    <div class="form-group mb-2 text-center">
-                                                        <button class="btn btn-primary btn-block" type="submit">
-                                                            <i class="mdi mdi-content-save"></i> Submit
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
                             </div>
+
+                            <div class="float-right">
+                                <button type="button" class="btn btn-info" onclick="event.preventDefault();  $('#{{ 'add-'.$course->id.'-'.$year->id.'-semester' }}').modal('toggle');"><i class="mdi mdi-plus-circle mr-1"></i> Add Course Year Semester</button>
+                            </div>
+
                             <div class="clearfix"></div>
 
-                            <hr class="my-4">
+                            <!-- Large modal -->
+                            <div class="modal fade" id="{{ 'add-'.$course->id.'-'.$year->id.'-semester' }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myLargeModalLabel">{{ $course->name }} <br> <span style="font-size:0.75em"> Add Semester to {{ $year->name }}</span></h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('courses.years.semesters.store',['course'=>$course, 'year'=>$year]) }}" method="POST">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="course_semester_id">Semester</label>
+                                                    <select class="form-control {{ $errors->has('course_semester_id') ? ' is-invalid' : '' }}" id="course_semester_id" name="course_semester_id" required>
+                                                        @foreach ($semesters as $semester)
+                                                            <option value="{{ $semester->id }}">{{ $semester->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if ($errors->has('course_semester_id'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            {{ $errors->first('course_semester_id') }}
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                                
+                                                <div class="form-group mb-2 text-center">
+                                                    <button class="btn btn-primary btn-block" type="submit">
+                                                        <i class="mdi mdi-content-save"></i> Submit
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
                             @if (count($year->courseSemesters($course->id)) > 0)
                                 {{-- @foreach ($year->courseSemesters($course->id) as $semester)
                                     <p>{{ $semester->name }}</p>
                                 @endforeach --}}
-                                <div class="row">
+                                <div class="row mt-3">
                                     <div class="col-sm-3 mb-2 mb-sm-0">
                                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                             @foreach ($year->courseSemesters($course->id) as $semester)
@@ -101,9 +104,65 @@
                                 
                                     <div class="col-sm-9">
                                         <div class="tab-content" id="v-pills-tabContent">
-                                            @foreach ($year->courseSemesters($course->id) as $sem)
-                                                <div class="tab-pane fade @if ($loop->first) active show @endif" id="{{ 'v-pills-'.$sem->id }}" role="tabpanel" aria-labelledby="{{ 'v-pills-'.$sem->id.'-tab' }}">
-                                                    <p class="mb-0">{{ $sem->name }}</p>
+                                            @foreach ($year->courseSemesters($course->id) as $semester)
+                                                <div class="tab-pane fade @if ($loop->first) active show @endif border border-primary p-2" id="{{ 'v-pills-'.$semester->id }}" role="tabpanel" aria-labelledby="{{ 'v-pills-'.$semester->id.'-tab' }}">
+
+                                                    <div class="float-left">
+                                                        <h4 style="text-decoration:underline">{{ Illuminate\Support\Str::title($semester->name) }} &nbsp; Units</h4>
+                                                    </div>
+
+                                                    <div class="float-right">
+                                                        <button type="button" class="btn btn-info" onclick="event.preventDefault();  $('#{{ 'add-'.$course->id.'-'.$year->id.'-'.$semester->id.'-unit' }}').modal('toggle');"><i class="mdi mdi-plus-circle mr-1"></i> Add Course Year Semester Unit</button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+
+                                                    <!-- Large modal -->
+                                                    <div class="modal fade" id="{{ 'add-'.$course->id.'-'.$year->id.'-'.$semester->id.'-unit' }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myLargeModalLabel">{{ $course->name }} , {{ $year->name }}<br> <span style="font-size:0.75em"> Add Unit to {{ $semester->name }}</span></h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="{{ route('courses.years.semester.units.store',['course'=>$course, 'year'=>$year, 'semester'=>$semester]) }}" method="POST">
+                                                                        @csrf
+                                                                        <div class="form-group">
+                                                                            <label for="unit_id">Unit</label>
+                                                                            <select class="form-control {{ $errors->has('unit_id') ? ' is-invalid' : '' }}" id="unit_id" name="unit_id" required>
+                                                                                @foreach ($units as $unit)
+                                                                                    <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @if ($errors->has('unit_id'))
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    {{ $errors->first('unit_id') }}
+                                                                                </span>
+                                                                            @endif
+                                                                        </div>
+                                                                        
+                                                                        <div class="form-group mb-2 text-center">
+                                                                            <button class="btn btn-primary btn-block" type="submit">
+                                                                                <i class="mdi mdi-content-save"></i> Submit
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
+
+                                                    @if (count($semester->semesterUnits($course->id, $year->id)) > 0)
+
+                                                        <ul class="list-group">
+                                                            @foreach ($semester->semesterUnits($course->id, $year->id) as $unit) 
+
+                                                                <li class="list-group-item">{{ $loop->iteration}} . &nbsp; {{ $unit->name }}</li>                                                           
+                                                            @endforeach
+                                                        </ul>
+                                                    @else
+                                                        <p>No Units For This Semester</p>    
+                                                    @endif
                                                 </div>
                                             @endforeach
                                         </div> <!-- end tab-content-->

@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('years', 'YearController');
     Route::resource('courses.years', 'CourseYearController');
     Route::resource('courses.years.semesters', 'CourseYearSemesterController');
+    Route::resource('courses.years.semester.units', 'CourseYearSemesterUnitController');
 
     Route::resource('academic-years', 'AcademicYearController');
     Route::resource('academic-semesters', 'AcademicSemesterController');
