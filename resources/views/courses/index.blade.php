@@ -22,6 +22,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th>Name</th>
+                        <th>Alias</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -44,6 +45,7 @@
                 ajax: "{{ route('courses.index') }}",
                 columns: [
                     { name: 'name' },
+                    { name: 'alias' },
                     { name: 'created_at' },
                     { name: 'action' , orderable: false, searchable: false }
                 ],

@@ -22,6 +22,16 @@
                     </span>
                 @endif
             </div>
+
+            <div class="form-group">
+                <label for="alias">Course Alias</label>
+                <input class="form-control {{ $errors->has('alias') ? ' is-invalid' : '' }}" type="text" id="alias" name="alias" value="{{ old('alias') }}" placeholder="Enter the Course Alias" required>
+                @if ($errors->has('alias'))
+                    <span class="invalid-feedback" role="alert">
+                        {{ $errors->first('alias') }}
+                    </span>
+                @endif
+            </div>
             
             <div class="form-group mb-2 text-center">
                 <button class="btn btn-primary btn-block" type="submit">

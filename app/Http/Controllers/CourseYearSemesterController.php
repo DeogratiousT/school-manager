@@ -86,8 +86,18 @@ class CourseYearSemesterController extends Controller
      * @param  \App\Models\CourseYearSemester  $courseYearSemester
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CourseYearSemester $courseYearSemester)
+    public function destroy(Request $request)
     {
-        //
+        $courseYearSemester = CourseYearSemester::where([
+            ['course_id' , $request->course ],
+            ['year_id' , $request->year ],
+            ['course_semester_id' , $request->semester ],
+        ])->first();
+
+        $course = Course::find($request->course);
+
+        $courseYearSemester->delete();
+
+        return redirect()->route('courses.show',$course)->with('success','Semester Removed');
     }
 }

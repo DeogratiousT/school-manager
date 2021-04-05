@@ -18,9 +18,9 @@ class CourseYearController extends Controller
      */
     public function index(Course $course)
     {
-        $semesters = CourseSemester::all();
-        $units = Unit::all();
-        return view('course-years.index',['course'=>$course, 'semesters'=>$semesters, 'units'=>$units]);
+        // $semesters = CourseSemester::all();
+        // $units = Unit::all();
+        // return view('course-years.index',['course'=>$course, 'semesters'=>$semesters, 'units'=>$units]);
     }
 
     /**

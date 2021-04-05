@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseSemester;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Freshbitsweb\Laratables\Laratables;
 use App\Laratables\CoursesLaratables;
@@ -45,6 +47,7 @@ class CourseController extends Controller
     {
         Course::create($request->validate([
             'name' => 'required|string|unique:courses,name',
+            'alias' => 'required|string',
         ]));
 
         return redirect()->route('courses.index')->with('success','Course Created Successfully');
@@ -58,7 +61,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return view('courses.show',['course'=>$course]);
+        $semesters = CourseSemester::all();
+        $units = Unit::all();
+        return view('courses.show',['course'=>$course, 'semesters'=>$semesters, 'units'=>$units]);
     }
 
     /**
@@ -83,6 +88,7 @@ class CourseController extends Controller
     {
         $course->update($request->validate([
             'name' => 'required|string',
+            'alias' => 'required|string',
         ]));        
 
         return redirect()->route('courses.show',$course)->with('success','Course Updated Successfully');

@@ -19,27 +19,28 @@
             </a>
         </li>
 
-        {{-- <li class="side-nav-title side-nav-item">Apps</li> --}}
+        {{-- <li class="side-nav-title side-nav-item">Catalogue</li> --}}
 
         <li class="side-nav-item">
-            <a href="{{ route('courses.index') }}" class="side-nav-link">
-                <i class="mdi mdi-folder-star"></i>
-                <span> Courses </span>
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-store"></i>
+                <span> Courses Catalogue </span>
+                <span class="menu-arrow"></span>
             </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{ route('course-semesters.index') }}" class="side-nav-link">
-                <i class="mdi mdi-folder"></i>
-                <span> Course Semesters </span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{ route('years.index') }}" class="side-nav-link">
-                <i class="mdi mdi-folder"></i>
-                <span> Years </span>
-            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('courses.index') }}">All Courses</a>
+                </li>
+                <li>
+                    <a href="{{ route('years.index') }}">Years</a>
+                </li>
+                <li>
+                    <a href="{{ route('course-semesters.index') }}">Semester</a>
+                </li>
+                <li>
+                    <a href="{{ route('units.index') }}">Units</a>
+                </li>
+            </ul>
         </li>
 
         <li class="side-nav-item">
@@ -53,13 +54,6 @@
             <a href="{{ route('academic-semesters.index') }}" class="side-nav-link">
                 <i class="mdi mdi-folder"></i>
                 <span>Academic Semesters </span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{ route('units.index') }}" class="side-nav-link">
-                <i class="mdi mdi-folder"></i>
-                <span>Units</span>
             </a>
         </li>
 
@@ -78,25 +72,6 @@
         </li> --}}
 
         {{-- <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-store"></i>
-                <span> Ecommerce </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="apps-ecommerce-products.html">Products</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-products-details.html">Products Details</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-orders.html">Orders</a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-store"></i>
                 <span> Ecommerce </span>

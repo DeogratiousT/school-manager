@@ -4,7 +4,7 @@
 
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
-        <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Course Years</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Courses</a></li>
         <li class="breadcrumb-item"><a href="{{ route('courses.years.index',$course) }}">{{ $course->name }}</a></li>
         <li class="breadcrumb-item active">All</li>
     </ol>
@@ -12,12 +12,21 @@
 
 @section('content')
 
-    @php
-        $selectedYear = " ";
-    @endphp
+    <div class="float-left">
+        <h4>{{ $course->name }}</h4>
+        <p>{{ $course->alias }}</p>
+    </div>
 
     <div class="float-right">
         <a href="{{ route('courses.years.create',$course) }}" class="btn btn-info mb-2"><i class="mdi mdi-plus-circle mr-1"></i>Add Course Year</a>
+
+        <a href="{{ route('courses.edit',$course) }}" class="btn btn-secondary mb-2"><i class="mdi mdi-square-edit-outline mr-1"></i>Edit Course</a>
+
+        <a href="{{ route('courses.destroy', $course) }}" class="btn btn-danger mb-2" onclick="event.preventDefault();document.getElementById('delete-course-form_{{ $course->id }}').submit();"> <i class="mdi mdi-delete mr-1"></i> Delete Course</a>
+        <form id="delete-course-form_{{ $course->id }}" action="{{ route('courses.destroy', $course) }}" method="POST" style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
     </div>
 
     <div class="clearfix"></div>

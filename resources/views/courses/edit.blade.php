@@ -26,6 +26,16 @@
                 @endif
             </div>
 
+            <div class="form-group">
+                <label for="alias">Course Alias</label>
+                <input class="form-control {{ $errors->has('alias') ? ' is-invalid' : '' }}" type="text" id="alias" name="alias" value="{{ $course->alias }}" required>
+                @if ($errors->has('alias'))
+                    <span class="invalid-feedback" role="alert">
+                        {{ $errors->first('alias') }}
+                    </span>
+                @endif
+            </div>
+
             <div class="form-group mb-2 text-center">
                 <button class="btn btn-primary btn-block" type="submit">
                     <i class="mdi mdi-content-save"></i> Submit
