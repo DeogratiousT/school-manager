@@ -22,4 +22,14 @@ class StudentApplication extends Model
     {
         return $this->belongsTo('App\Models\County');
     }
+
+    public function media()
+    {
+        return $this->hasMany('App\Models\StudentApplicationMedia');
+    }
+
+    public function fullname()
+    {
+        return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
+    }
 }

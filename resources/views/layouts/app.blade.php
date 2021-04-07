@@ -84,6 +84,10 @@
 
         @stack('scripts')
 
+        <script type="text/javascript">
+            setTimeout(() => document.querySelector('.alert').remove(), 10000);
+        </script>
+
         <!-- Apex js -->
         {{-- <script src="assets/js/vendor/apexcharts.min.js"></script> --}}
 

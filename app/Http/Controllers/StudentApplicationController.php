@@ -45,7 +45,7 @@ class StudentApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        StudentApplication::create($request->validate([
+        $studentApplication = StudentApplication::create($request->validate([
             'first_name' => 'required',
             'middle_name' => 'required',
             'last_name' => 'required',
@@ -55,7 +55,7 @@ class StudentApplicationController extends Controller
             'status' => 'required'
         ]));
 
-        return redirect()->route('students.index')->with('success','Student Application Successful');
+        return redirect()->route('students.media.create',$studentApplication)->with('success','Student Details Saved, Upload Required Documents');
     }
 
     /**

@@ -13,6 +13,7 @@
     <div class="container">
         <form action="{{ route('students.store') }}" method="POST">
             @csrf
+
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" type="text" id="first_name" name="first_name" value="{{ old('first_name') }}" placeholder="Enter your First Name" required>
@@ -90,5 +91,4 @@
             </div>
         </form>
     </div>
-
-@endsection 
+@endsection
