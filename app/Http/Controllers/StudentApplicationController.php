@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentApplication;
+use App\Models\Course;
+use App\Models\County;
 use Illuminate\Http\Request;
+use Freshbitsweb\Laratables\Laratables;
+use App\Laratables\StudentApplicationsLaratables;
 
 class StudentApplicationController extends Controller
 {
@@ -14,7 +18,11 @@ class StudentApplicationController extends Controller
      */
     public function index()
     {
-        //
+        if (request()->ajax()) {
+            return Laratables::recordsOf(StudentApplication::class, StudentApplicationsLaratables::class);
+        }
+
+        return view('student-applications.index');
     }
 
     /**
@@ -24,7 +32,9 @@ class StudentApplicationController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+        $counties = County::all();
+        return view('student-applications.create',['courses'=>$courses, 'counties'=>$counties]);
     }
 
     /**
@@ -35,7 +45,17 @@ class StudentApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        StudentApplication::create($request->validate([
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'national_id' => 'required|integer',
+            'course_id' => 'required|exists:courses,id',
+            'county_id' => 'required|exists:counties,id',
+            'status' => 'required'
+        ]));
+
+        return redirect()->route('students.index')->with('success','Student Application Successful');
     }
 
     /**
@@ -78,8 +98,14 @@ class StudentApplicationController extends Controller
      * @param  \App\Models\StudentApplication  $studentApplication
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentApplication $studentApplication)
+    public function destroy(Request $request, $id)
     {
-        //
+        $studentApplication = StudentApplication::find($id);
+
+        $studentApplication->status = $request->status;
+
+        $studentApplication->save();
+
+        return redirect()->route('students.index')->with('success','Application '.$request->status.' Successfully');
     }
 }

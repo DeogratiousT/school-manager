@@ -20,6 +20,8 @@
 
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
+    @yield('head-imports')
+
     </head>
 
     <body data-layout="detached" class="loading">

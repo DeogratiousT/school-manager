@@ -19,6 +19,13 @@
             </a>
         </li>
 
+        <li class="side-nav-item">
+            <a href="{{ route('students.index') }}" class="side-nav-link">
+                <i class="mdi mdi-account-multiple"></i>
+                <span> Students </span>
+            </a>
+        </li>
+
         {{-- <li class="side-nav-title side-nav-item">Catalogue</li> --}}
 
         <li class="side-nav-item">

@@ -15,11 +15,11 @@ class StudentApplication extends Model
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Course','course_id');
+        return $this->belongsTo('App\Models\Course');
     }
 
     public function county()
     {
-        return $this->belongsTo('App\Models\County','county_id');
+        return $this->belongsTo('App\Models\County');
     }
 }

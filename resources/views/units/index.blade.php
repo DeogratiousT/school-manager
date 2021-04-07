@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('head-imports')    
+    <link href="{{ asset('css/creative/dataTables.bootstrap4.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/creative/responsive.bootstrap4.css') }}" rel="stylesheet" />
+@endsection
+
 @section('page-title','Units')
 
 @section('breadcrumbs')
@@ -18,7 +23,7 @@
 
     <div class="card">
         <div class="card-body"> 
-            <table id="units-laratable" class="table table-hover table-centered w-100 dt-responsive nowrap">
+            <table id="units-laratable" class="table dt-responsive nowrap w-100">
                 <thead class="thead-light">
                     <tr>
                         <th>Name</th>
@@ -34,9 +39,13 @@
 
 @push('scripts')
     <!-- JQUERY -->
-    <script src="{{ asset('js/creative/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('js/creative/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/creative/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/creative/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('js/creative/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/creative/responsive.bootstrap4.min.js') }}"></script>
+
+    <!-- Datatable Init js -->
+    <script src="{{ asset('js/creative/demo.datatable-init.js') }}"></script>
 
     <script>
         $(document).ready(function(){
