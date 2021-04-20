@@ -38,7 +38,21 @@
         </div>
     </div>
 
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-heading">Uploaded Images</h3>
+        </div>
+
+        <div class="panel-body" id="uploaded_images"></div>
+    </div>
+
+    <script src="{{ asset('landing/jquery/jquery.min.js') }}"></script>
+    
     <script type="text/javascript">
+        load_images();
+
         Dropzone.options.dropzoneForm = {
             autoProcessQueue : false,
             acceptedFiles: ".png, .jpg, .jpeg, .pdf, .jpeg",
@@ -60,8 +74,20 @@
                         alert('Files Uploaded Successfully');
 
                     }
+                    load_images();
                 });
             }
         };
+
+        function load_images()
+        {
+            $.ajax({
+                url:"{{ route('students.media.index',$studentApplication) }}",
+                success:function(data)
+                {
+                    $('#uploaded_images').html(data);
+                }
+            });
+        }
     </script>
 @endsection

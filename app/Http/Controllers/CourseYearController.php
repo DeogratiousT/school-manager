@@ -46,7 +46,7 @@ class CourseYearController extends Controller
             ['course_id' => $course->id, 'year_id'=>$request->year_id]
         );
 
-        return redirect()->route('courses.years.index',$course)->with('success','Year Updated Successfully');
+        return redirect()->route('courses.show',$course)->with('success','Year Updated Successfully');
     }
 
     /**

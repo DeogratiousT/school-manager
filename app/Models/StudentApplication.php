@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentApplication extends Model
 {
-    protected $fillable = ['admission_number','course_id','first_name','middle_name','last_name','national_id','county_id','status'];
+    protected $fillable = ['serial','admission_number','course_id','first_name','middle_name','last_name','national_id','county_id','status'];
 
     public function contactDetail()
     {

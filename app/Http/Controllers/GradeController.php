@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use App\Models\Course;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
+use Freshbitsweb\Laratables\Laratables;
+use App\Laratables\GradesLaratables;
 
 class GradeController extends Controller
 {
@@ -14,7 +18,11 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        if (request()->ajax()) {
+            return Laratables::recordsOf(Grade::class, GradesLaratables::class);
+        }
+
+        return view('grades.index');
     }
 
     /**
@@ -24,7 +32,10 @@ class GradeController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+        $academicYears = AcademicYear::all();
+
+        return view('grades.create',['courses'=>$courses, 'academicYears'=>$academicYears]);
     }
 
     /**
@@ -35,7 +46,13 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Grade::create($request->validate([
+            'name' => 'required',
+            'course_id' => 'required|exists:courses,id',
+            'academic_year_id' => 'required|exists:academic_years,id',
+        ]));
+
+        return redirect()->route('intakes.index')->with('success','Intake Created Successfully');
     }
 
     /**
@@ -57,7 +74,10 @@ class GradeController extends Controller
      */
     public function edit(Grade $grade)
     {
-        //
+        $courses = Course::all();
+        $academicYears = AcademicYear::all();
+
+        return view('grades.edit',['grade'=>$grade, 'courses'=>$courses, 'academicYears'=>$academicYears]);
     }
 
     /**
@@ -69,7 +89,13 @@ class GradeController extends Controller
      */
     public function update(Request $request, Grade $grade)
     {
-        //
+        $grade::update($request->validate([
+            'name' => 'required',
+            'course_id' => 'required|exists:courses,id',
+            'academic_year_id' => 'required|exists:academic_years,id',
+        ]));
+
+        return redirect()->route('intakes.index')->with('success','Intake Updated Successfully');
     }
 
     /**
@@ -80,6 +106,8 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        $grade->delete();
+
+        return redirect()->route('intakes.index')->with('success','Intake Deleted Successfully');
     }
 }

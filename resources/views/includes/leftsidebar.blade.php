@@ -51,17 +51,22 @@
         </li>
 
         <li class="side-nav-item">
-            <a href="{{ route('academic-years.index') }}" class="side-nav-link">
+            <a href="javascript: void(0);" class="side-nav-link">
                 <i class="mdi mdi-folder"></i>
-                <span>Academic Years </span>
+                <span> Enrollment </span>
+                <span class="menu-arrow"></span>
             </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{ route('academic-semesters.index') }}" class="side-nav-link">
-                <i class="mdi mdi-folder"></i>
-                <span>Academic Semesters </span>
-            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('intakes.index') }}">Intakes</a>
+                </li>
+                <li>
+                    <a href="{{ route('academic-years.index') }}">Academic Years</a>
+                </li>
+                <li>
+                    <a href="{{ route('academic-semesters.index') }}">Academic Semester</a>
+                </li>
+            </ul>
         </li>
 
         <li class="side-nav-item">

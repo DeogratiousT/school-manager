@@ -14,9 +14,25 @@ class StudentApplicationMediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $studentApplication = StudentApplication::find($id);
+
+        $studentApplicationMedia = StudentApplicationMedia::where('student_application_id',$id)->orderBy('created_at','DESC')->get();
+
+        $output = '<div class="row">';
+
+        foreach ($studentApplicationMedia as $media) {
+            $output .= '<div class="col-md-3 mb-3 mr-0">
+                            <embed src="'.asset('storage/uploads/'.$id.'/'.$media->name).'" class="img-fluid" width="175" height="175" style="height:175px;"></embed>
+                            <a href="'.asset('storage/uploads/'.$id.'/'.$media->name).'" class="btn btn-link text-success" target="_blank">Preview</button>
+                            <button type="button" class="btn btn-link text-danger">Remove</button>
+                        </div>
+                    ';
+        }
+        $output .= '</div';
+
+        echo $output;
     }
 
     /**
@@ -54,7 +70,7 @@ class StudentApplicationMediaController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.Str::random('5').'.'.$extension;
             //Upload Image
-            $path = $request->file('file')->storeAs('public/'.$studentApplication->id ,$fileNameToStore, 'public');
+            $path = $request->file('file')->storeAs('uploads/'.$studentApplication->id ,$fileNameToStore, 'public');
 
         }else{
             return redirect()->route('students.media.create',$studentApplication)->with('error','No Files Selected');

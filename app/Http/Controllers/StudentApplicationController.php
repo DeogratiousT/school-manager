@@ -8,6 +8,7 @@ use App\Models\County;
 use Illuminate\Http\Request;
 use Freshbitsweb\Laratables\Laratables;
 use App\Laratables\StudentApplicationsLaratables;
+use Illuminate\Support\Str;
 
 class StudentApplicationController extends Controller
 {
@@ -45,7 +46,7 @@ class StudentApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        $studentApplication = StudentApplication::create($request->validate([
+        $studentApplication = StudentApplication::firstOrNew($request->validate([
             'first_name' => 'required',
             'middle_name' => 'required',
             'last_name' => 'required',
@@ -54,6 +55,14 @@ class StudentApplicationController extends Controller
             'county_id' => 'required|exists:counties,id',
             'status' => 'required'
         ]));
+
+        $currentserial = StudentApplication::max('serial');
+        $newserial = (int) $currentserial + 1;
+        $newserial = Str::padLeft((string) $newserial, 5,'0');
+
+        $studentApplication->serial = $newserial;
+
+        $studentApplication->save();
 
         return redirect()->route('students.media.create',$studentApplication)->with('success','Student Details Saved, Upload Required Documents');
     }
@@ -101,6 +110,10 @@ class StudentApplicationController extends Controller
     public function destroy(Request $request, $id)
     {
         $studentApplication = StudentApplication::find($id);
+
+        if ($studentApplication->status == 'requested' || $studentApplication->admission_number == null) {
+            $studentApplication->admission_number = $studentApplication->course->alias.'/'.$studentApplication->serial.'/';
+        }
 
         $studentApplication->status = $request->status;
 

@@ -43,7 +43,7 @@ class CourseYearSemesterController extends Controller
             'course_semester_id' => $request->course_semester_id,
         ]);
 
-        return redirect()->route('courses.years.index',$request->course)->with('success','Semester added Successfully');
+        return redirect()->route('courses.show',$request->course)->with('success','Semester added Successfully');
     }
 
     /**

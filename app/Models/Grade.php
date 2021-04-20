@@ -27,5 +27,15 @@ class Grade extends Model
         return 'slug';
     }
 
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
+    }
+
+    public function academicYear()
+    {
+        return $this->belongsTo('App\Models\AcademicYear');
+    }
+
     
 }
