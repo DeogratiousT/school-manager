@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropCourseYearSemesterIdFromCourseYearSemesterUnitsTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class DropCourseYearSemesterIdFromCourseYearSemesterUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::table('course_year_semester_units', function (Blueprint $table) {
-            $table->dropColumn('course_year_semester_id');
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class DropCourseYearSemesterIdFromCourseYearSemesterUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::table('course_year_semester_units', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('departments');
     }
 }

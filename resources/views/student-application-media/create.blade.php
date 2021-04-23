@@ -12,7 +12,7 @@
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ route('students.index') }}">Student Application</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('students.show',$studentApplication) }}">{{ $studentApplication->fullname() }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('students.show',$studentApplication) }}">{{ $studentApplication->first_name }}</a></li>
         <li class="breadcrumb-item active">Create Media</li>
     </ol>
 @endsection

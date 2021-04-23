@@ -17,6 +17,15 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('alias')->unique();
+            $table->string('code')->unique();
+            $table->mediumText('requirements');
+            $table->mediumText('uploads');
+            $table->mediumText('description');
+            $table->unsignedBigInteger('level_id');
+            $table->unsignedBigInteger('department_id');
+            $table->mediumText('learning_outcomes')->nullable();
+            $table->mediumText('career_opportunities')->nullable();
             $table->timestamps();
         });
     }

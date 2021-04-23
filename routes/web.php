@@ -37,5 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('counties', 'CountyController');
     Route::resource('units', 'UnitController');
+    Route::resource('levels', 'LevelController');
+    Route::resource('departments', 'DepartmentController');
 
 });

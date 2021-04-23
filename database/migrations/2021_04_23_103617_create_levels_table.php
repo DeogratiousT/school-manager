@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSerialToStudentApplicationsTable extends Migration
+class CreateLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddSerialToStudentApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('student_applications', function (Blueprint $table) {
-            $table->string('serial',5);
+        Schema::create('levels', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('alias');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddSerialToStudentApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('student_applications', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('levels');
     }
 }

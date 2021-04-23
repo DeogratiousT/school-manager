@@ -15,7 +15,9 @@ class CreateCourseYearSemesterUnitsTable extends Migration
     {
         Schema::create('course_year_semester_units', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_year_semester_id');
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('year_id');
+            $table->unsignedBigInteger('semester_id');
             $table->unsignedBigInteger('unit_id');
             $table->timestamps();
         });

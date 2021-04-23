@@ -19,7 +19,9 @@ class StudentApplicationController extends Controller
      */
     public function index()
     {
+        
         if (request()->ajax()) {
+            dd(request());
             return Laratables::recordsOf(StudentApplication::class, StudentApplicationsLaratables::class);
         }
 
@@ -73,9 +75,10 @@ class StudentApplicationController extends Controller
      * @param  \App\Models\StudentApplication  $studentApplication
      * @return \Illuminate\Http\Response
      */
-    public function show(StudentApplication $studentApplication)
+    public function show($id)
     {
-        //
+        $studentApplication = StudentApplication::find($id);
+        return view('student-applications.show',['studentApplication'=>$studentApplication]);
     }
 
     /**

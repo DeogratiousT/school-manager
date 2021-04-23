@@ -17,6 +17,7 @@ class CreateStudentApplicationsTable extends Migration
             $table->id();
             $table->string('admission_number')->nullable();
             $table->unsignedBigInteger('course_id');
+            $table->string('serial',5);
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');

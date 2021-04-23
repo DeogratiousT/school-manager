@@ -19,12 +19,12 @@
             </a>
         </li>
 
-        <li class="side-nav-item">
+        {{-- <li class="side-nav-item">
             <a href="{{ route('students.index') }}" class="side-nav-link">
                 <i class="mdi mdi-account-multiple"></i>
                 <span> Students </span>
             </a>
-        </li>
+        </li> --}}
 
         {{-- <li class="side-nav-title side-nav-item">Catalogue</li> --}}
 
@@ -47,6 +47,12 @@
                 <li>
                     <a href="{{ route('units.index') }}">Units</a>
                 </li>
+                <li>
+                    <a href="{{ route('levels.index') }}">Levels</a>
+                </li>
+                <li>
+                    <a href="{{ route('departments.index') }}">Departments</a>
+                </li>
             </ul>
         </li>
 
@@ -57,6 +63,9 @@
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="{{ route('students.index') }}">Student Applications</a>
+                </li>
                 <li>
                     <a href="{{ route('intakes.index') }}">Intakes</a>
                 </li>

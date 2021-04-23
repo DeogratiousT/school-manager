@@ -1,5 +1,7 @@
 <a href="{{ route('students.media.create', $studentApplication) }}" class="action-icon" data-toggle="tooltip" data-placement="bottom" title="View Uploads"> <i class="mdi mdi-folder-open"></i></a>
 
+<a href="{{ route('students.show', $studentApplication) }}" class="action-icon" data-toggle="tooltip" data-placement="bottom" title="View Application"> <i class="mdi mdi-eye"></i></a>
+
 @if ($studentApplication->status == 'requested' || $studentApplication->status == 'rejected')
     <a href="{{ route('students.destroy', $studentApplication) }}" class="action-icon" data-toggle="tooltip" data-placement="bottom" title="Approve Application" onclick="event.preventDefault();document.getElementById('approve-application-form_{{ $studentApplication->id }}').submit();"> <i class="mdi mdi-account-check text-success"></i></a>
     <form id="approve-application-form_{{ $studentApplication->id }}" action="{{ route('students.destroy', $studentApplication) }}" method="POST" style="display: none;">

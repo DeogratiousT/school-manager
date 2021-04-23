@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\CourseSemester;
 use App\Models\Unit;
+use App\Models\Level;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Freshbitsweb\Laratables\Laratables;
 use App\Laratables\CoursesLaratables;
@@ -34,7 +36,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        $levels = Level::all();
+        $departments = Department::all();
+        return view('courses.create',['levels'=>$levels, 'departments'=>$departments]);
     }
 
     /**
@@ -48,6 +52,14 @@ class CourseController extends Controller
         Course::create($request->validate([
             'name' => 'required|string|unique:courses,name',
             'alias' => 'required|string',
+            'code' => 'required|unique:courses,code',
+            'level_id' => 'required|exists:levels,id',
+            'department_id' => 'required|exists:departments,id',
+            'description' => 'required',
+            'requirements' => 'required',
+            'uploads' => 'required',
+            'learning_outcomes' => 'nullable',
+            'career_opportunities' => 'nullable',
         ]));
 
         return redirect()->route('courses.index')->with('success','Course Created Successfully');
