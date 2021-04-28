@@ -1,24 +1,22 @@
 @extends('layouts.app')
 
-@section('page-title','Intakes')
-
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ route('intakes.index') }}">Intakes</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('intakes.show',$grade) }}">{{ $grade->name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('intakes.show',$intake) }}">{{ $intake->name }}</a></li>
         <li class="breadcrumb-item active">Edit</li>
     </ol>
 @endsection
 
 @section('content')
     <div class="container">
-        <form action="{{ route('intakes.update',$grade) }}" method="POST">
+        <form action="{{ route('intakes.update',$intake) }}" method="POST">
             @csrf
             @method('PUT')
             
             <div class="form-group">
                 <label for="name">Intake Name</label>
-                <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" id="name" name="name" value="{{ $grade->name }}" required>
+                <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" id="name" name="name" value="{{ $intake->name }}" required>
                 @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
                         {{ $errors->first('name') }}

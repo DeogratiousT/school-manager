@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grade;
-use App\Models\Course;
-use App\Models\AcademicYear;
+use App\Models\Intake;
 use Illuminate\Http\Request;
 use Freshbitsweb\Laratables\Laratables;
-use App\Laratables\GradesLaratables;
+use App\Laratables\IntakesLaratables;
 
-class GradeController extends Controller
+class IntakeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +17,10 @@ class GradeController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            return Laratables::recordsOf(Grade::class, GradesLaratables::class);
+            return Laratables::recordsOf(Intake::class, IntakesLaratables::class);
         }
 
-        return view('grades.index');
+        return view('intakes.index');
     }
 
     /**
@@ -32,10 +30,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
-        $academicYears = AcademicYear::all();
-
-        return view('grades.create',['courses'=>$courses, 'academicYears'=>$academicYears]);
+        return view('intakes.create');
     }
 
     /**
@@ -46,10 +41,8 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        Grade::create($request->validate([
-            'name' => 'required',
-            'course_id' => 'required|exists:courses,id',
-            'academic_year_id' => 'required|exists:academic_years,id',
+        Intake::create($request->validate([
+            'name' => 'required|unique:intakes,name',
         ]));
 
         return redirect()->route('intakes.index')->with('success','Intake Created Successfully');
@@ -58,41 +51,36 @@ class GradeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Intake  $intake
      * @return \Illuminate\Http\Response
      */
-    public function show(Grade $grade)
+    public function show(Intake $intake)
     {
-        //
+        return view('intakes.show',['intake'=>$intake]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Intake  $intake
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grade $grade)
+    public function edit(Intake $intake)
     {
-        $courses = Course::all();
-        $academicYears = AcademicYear::all();
-
-        return view('grades.edit',['grade'=>$grade, 'courses'=>$courses, 'academicYears'=>$academicYears]);
+        return view('intakes.edit',['intake'=>$intake]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Intake  $intake
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grade $grade)
+    public function update(Request $request, Intake $intake)
     {
-        $grade::update($request->validate([
+        $intake->update($request->validate([
             'name' => 'required',
-            'course_id' => 'required|exists:courses,id',
-            'academic_year_id' => 'required|exists:academic_years,id',
         ]));
 
         return redirect()->route('intakes.index')->with('success','Intake Updated Successfully');
@@ -101,13 +89,23 @@ class GradeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Grade  $grade
+     * @param  \App\Models\Intake  $intake
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grade $grade)
+    public function destroy(Request $request, Intake $intake)
     {
-        $grade->delete();
+        if (!isset($request->name)) {
 
-        return redirect()->route('intakes.index')->with('success','Intake Deleted Successfully');
+            return view('intakes.delete',['intake'=>$intake]);
+
+        }else{
+
+            if ($request->name != $intake->slug) {
+                return redirect()->route('intakes.show',['intake'=>$intake])->with('error','Invalid Entry');
+            }
+            $intake->delete();
+
+            return redirect()->route('intakes.index')->with('success','intake Deleted Successfully');
+        }
     }
 }

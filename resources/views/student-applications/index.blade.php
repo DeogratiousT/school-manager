@@ -5,8 +5,6 @@
     <link href="{{ asset('css/creative/responsive.bootstrap4.css') }}" rel="stylesheet" />
 @endsection
 
-@section('page-title','Student Applications')
-
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ route('students.index') }}">Student Application</a></li>
@@ -14,13 +12,11 @@
     </ol>
 @endsection
 
+@section('page-right')
+    <a href="{{ route('students.create') }}" class="btn btn-info mb-2"><i class="mdi mdi-plus-circle mr-1"></i>Add Student Application</a>
+@endsection
+
 @section('content')
-    <div class="float-right">
-        <a href="{{ route('students.create') }}" class="btn btn-info mb-2"><i class="mdi mdi-plus-circle mr-1"></i>Add Student Application</a>
-    </div>
-
-    <div class="clearfix"></div>
-
     <div class="card">
         <div class="card-body"> 
             <table id="student-applications-laratable" class="table dt-responsive nowrap w-100">

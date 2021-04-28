@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
-@section('page-title','Intakes')
-
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
-        <li class="breadcrumb-item"><a href="{{ route('grades.index') }}">Intakes</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('grades.show',$grade) }}">{{ $grade->name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('intakes.index') }}">Intakes</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('intakes.show',$intake) }}">{{ $intake->name }}</a></li>
         <li class="breadcrumb-item active">All</li>
     </ol>
 @endsection
@@ -18,7 +16,7 @@
                 <div class="card-body">
                     <p>Intake Details</p><hr>
                     <div class="list-group">
-                        <span><b>Intake Name</b> : {{$grade->name}}</span><br>
+                        <span><b>Intake Name</b> : {{$intake->name}}</span><br>
                     </div>
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
@@ -29,13 +27,13 @@
                 <div class="card-body">
                     <p>Enter Intake alias given below to Delete</p><hr>
                     
-                    <form action="{{ route('grades.destroy', $grade) }}" method="POST">
+                    <form action="{{ route('intakes.destroy', $intake) }}" method="POST">
                         @csrf
                         @method('DELETE')
 
                             <div class="form-group">
-                                <label for="name"><b>{{ $grade->slug }}</b></label>
-                                <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="{{ $grade->slug }}" required>
+                                <label for="name"><b>{{ $intake->slug }}</b></label>
+                                <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="{{ $intake->slug }}" required>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         {{ $errors->first('name') }}
