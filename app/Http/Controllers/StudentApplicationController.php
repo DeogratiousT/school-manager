@@ -19,9 +19,7 @@ class StudentApplicationController extends Controller
      */
     public function index()
     {
-        
         if (request()->ajax()) {
-            dd(request());
             return Laratables::recordsOf(StudentApplication::class, StudentApplicationsLaratables::class);
         }
 

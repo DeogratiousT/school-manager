@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('page-title','Courses')
-
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Courses</a></li>
@@ -11,7 +9,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('courses.store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="name">Course Name</label>

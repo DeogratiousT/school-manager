@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
-@section('page-title','Courses')
-
 @section('breadcrumbs')
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">Courses</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('courses.show',$course) }}">{{ $course->name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('courses.show',$course) }}">{{ $course->code }}</a></li>
         <li class="breadcrumb-item active">All</li>
     </ol>
 @endsection

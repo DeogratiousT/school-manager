@@ -36,4 +36,14 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\Year','course_years','course_id','year_id');
     }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Models\Department');
+    }
+
+    public function level()
+    {
+        return $this->belongsTo('App\Models\Level');
+    }
 }

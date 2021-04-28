@@ -86,7 +86,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('courses.edit',['course'=>$course]);
+        $levels = Level::all();
+        $departments = Department::all();
+        return view('courses.edit',['course'=>$course, 'levels'=>$levels, 'departments'=>$departments]);
     }
 
     /**
@@ -101,6 +103,14 @@ class CourseController extends Controller
         $course->update($request->validate([
             'name' => 'required|string',
             'alias' => 'required|string',
+            'code' => 'required',
+            'level_id' => 'required|exists:levels,id',
+            'department_id' => 'required|exists:departments,id',
+            'description' => 'required',
+            'requirements' => 'required',
+            'uploads' => 'required',
+            'learning_outcomes' => 'nullable',
+            'career_opportunities' => 'nullable',
         ]));        
 
         return redirect()->route('courses.show',$course)->with('success','Course Updated Successfully');

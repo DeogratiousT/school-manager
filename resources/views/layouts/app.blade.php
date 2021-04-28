@@ -44,15 +44,14 @@
                         
                         <!-- start page title -->
                         <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        @yield('breadcrumbs')
-                                    </div>
-                                    <h4 class="page-title">
-                                        @yield('page-title')
-                                    </h4>
+                            <div class="col-12 py-2">                                
+                                <div class="float-left">
+                                    @yield('breadcrumbs')
                                 </div>
+                                <div class="float-right">
+                                    @yield('page-right')
+                                </div>
+                                <div class="clearfix"></div>                              
                             </div>
                         </div>     
                         <!-- end page title -->
