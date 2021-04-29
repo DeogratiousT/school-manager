@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Auth\Passwords\CanResetPassword as CanPasswordReset;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
-    use Notifiable;
+    use Notifiable, CanPasswordReset;
 
     /**
      * The attributes that are mass assignable.
