@@ -34,7 +34,7 @@
                             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Levels">Levels</h5>
                             <h3 class="my-2 py-1">{{ $levels }}</h3>
                         </div>
-                        <a href="{{ route('courses.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Levels</a>
+                        <a href="{{ route('levels.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Levels</a>
                     </div> <!-- end row-->
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
@@ -48,7 +48,7 @@
                             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Departments">Departments</h5>
                             <h3 class="my-2 py-1">{{ $departments }}</h3>
                         </div>
-                        <a href="{{ route('courses.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Departments</a>
+                        <a href="{{ route('departments.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Departments</a>
                     </div> <!-- end row-->
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
@@ -62,7 +62,7 @@
                             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Applications">Applications</h5>
                             <h3 class="my-2 py-1">{{ $applications }}</h3>
                         </div>
-                        <a href="{{ route('courses.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Applications</a>
+                        <a href="{{ route('students.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Applications</a>
                     </div> <!-- end row-->
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
@@ -76,7 +76,7 @@
                             <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Intakes">Intakes</h5>
                             <h3 class="my-2 py-1">{{ $intakes }}</h3>
                         </div>
-                        <a href="{{ route('courses.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Intakes</a>
+                        <a href="{{ route('intakes.index') }}" class="btn btn-light btn-block"><i class="mdi mdi-arrow-right-circle-outline"></i> View Intakes</a>
                     </div> <!-- end row-->
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
