@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'departments' => $departments,
             'applications' => $applications,
             'intakes' => $intakes,
-            'counties' => $courses,
+            'counties' => $counties,
         ]);
     }
 }
