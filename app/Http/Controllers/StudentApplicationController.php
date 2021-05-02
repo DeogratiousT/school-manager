@@ -120,6 +120,6 @@ class StudentApplicationController extends Controller
 
         $studentApplication->save();
 
-        return redirect()->route('students.index')->with('success','Application '.$request->status.' Successfully');
+        return redirect()->route('intakes.courses.show',['intake'=>$request->intake, 'course'=>$request->course])->with('success','Application '.$request->status.' Successfully');
     }
 }

@@ -32,9 +32,9 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $course->name }}</td>
                                     <td>
-                                        <a href="{{ route('intakes.courses.destroy',['intake'=>$intake, 'course'=>$course]) }}" data-toggle="tooltip" data-placement="bottom" title="View Course Applications"><i class="mdi mdi-eye text-primary"></i></a>
+                                        <a href="{{ route('intakes.courses.destroy',['intake'=>$intake, 'course'=>$course]) }}" class="action-icon" data-toggle="tooltip" data-placement="bottom" title="View Course Applications"><i class="mdi mdi-eye text-primary"></i></a>
 
-                                        <a href="{{ route('intakes.courses.destroy',['intake'=>$intake, 'course'=>$course]) }}" data-toggle="tooltip" data-placement="bottom" title="Remove Course"><i class="mdi mdi-delete text-danger"></i></a>
+                                        <a href="{{ route('intakes.courses.destroy',['intake'=>$intake, 'course'=>$course]) }}" class="action-icon" data-toggle="tooltip" data-placement="bottom" title="Remove Course"><i class="mdi mdi-delete text-danger"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

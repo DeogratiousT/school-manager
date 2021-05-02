@@ -30,13 +30,13 @@
 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-store"></i>
-                <span> Courses Catalogue </span>
+                <i class="mdi mdi-view-list"></i>
+                <span> Catalogue </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('courses.index') }}">All Courses</a>
+                    <a href="{{ route('courses.index') }}">Courses</a>
                 </li>
                 <li>
                     <a href="{{ route('years.index') }}">Years</a>
@@ -58,13 +58,13 @@
 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
-                <i class="mdi mdi-folder"></i>
+                <i class="mdi mdi-account-multiple-plus"></i>
                 <span> Enrollment </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('students.index') }}">Student Applications</a>
+                    <a href="{{ route('students.index') }}">All Applications</a>
                 </li>
                 <li>
                     <a href="{{ route('intakes.index') }}">Intakes</a>

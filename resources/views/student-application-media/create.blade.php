@@ -28,8 +28,9 @@
                 @csrf
                 <div class="dz-default dz-message">
                     <i class="mdi mdi-cloud-upload-outline mdi-24px"></i>
-                    <h4>Drop files here or click to upload.</h4>
-                    <p>Accepted file formats: .png, .jpg, .pdf .pdf</p>
+                    <h4>Drop files here or click to upload the required files:</h4>
+                    <div>{!! $studentApplication->course->uploads !!}</div>
+                    <p class="text-danger">Accepted file formats: .png, .jpg, .jpeg, .pdf</p>
                 </div>
             </form>
             <div class="mx-auto mt-2">
@@ -55,7 +56,7 @@
 
         Dropzone.options.dropzoneForm = {
             autoProcessQueue : false,
-            acceptedFiles: ".png, .jpg, .jpeg, .pdf, .jpeg",
+            acceptedFiles: ".png, .jpg, .jpeg, .pdf",
 
 
             init:function(){

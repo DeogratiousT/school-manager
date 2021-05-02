@@ -27,7 +27,7 @@ class Course extends Model
         return 'slug';
     }
 
-    public function studentApplication()
+    public function studentApplications()
     {
         return $this->hasMany('App\Models\StudentApplication');
     }

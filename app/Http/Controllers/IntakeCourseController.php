@@ -6,6 +6,7 @@ use App\Models\IntakeCourse;
 use App\Models\Course;
 use App\Models\Intake;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class IntakeCourseController extends Controller
 {
@@ -51,9 +52,12 @@ class IntakeCourseController extends Controller
      * @param  \App\Models\IntakeCourse  $intakeCourse
      * @return \Illuminate\Http\Response
      */
-    public function show(IntakeCourse $intakeCourse)
+    public function show(IntakeCourse $intakeCourse, Intake $intake, Course $course)
     {
-        //
+        $newApplications = $course->studentApplications->where('status','requested');
+        $approvedApplications = $course->studentApplications->where('status','approved');
+        $rejectedApplications = $course->studentApplications->where('status','rejected');
+        return view('intake-courses.show',['intake'=>$intake, 'course'=>$course, 'newApplications'=>$newApplications, 'approvedApplications'=>$approvedApplications, 'rejectedApplications'=>$rejectedApplications]);
     }
 
     /**
